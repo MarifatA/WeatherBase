@@ -4,11 +4,6 @@ import com.weatherbase.utilities.TestBase;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
-
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,12 +16,12 @@ public class HomePage13141516 extends TestBase {
 	private String DCTitle = "District of Columbia, United States of America Travel Weather Averages (Weatherbase)";
 	private String WashingtonTitle = "Washington, District of Columbia Travel Weather Averages (Weatherbase)";
 	private Object expectedWeatherAvgSummary = "MONTHLY - WEATHER AVERAGES SUMMARY ";
-	HomePage home = new HomePage();
 	private Object expectedSummary = "Show All Data";
 	private String expectedClimateTitle = "Weatherbase Weather Reference and Calculators";
 	private String expectedClimateURL = "http://www.weatherbase.com/reference.php3";
+	HomePage home = new HomePage();
 
-	@Test(priority = 12)
+	//@Test(priority = 12)
 	public void groupVerificationTest() throws InterruptedException {
 
 		// Step 1
@@ -56,7 +51,7 @@ public class HomePage13141516 extends TestBase {
 
 	}
 
-	@Test(priority = 13)
+	//@Test(priority = 13)
 	public void verifyMonthlyAvgTest() throws InterruptedException {
 		// Step 1
 		assertTrue(home.isAt());
@@ -113,12 +108,12 @@ public class HomePage13141516 extends TestBase {
 		home.printThisDataButton.click();
 		wait.until(ExpectedConditions.numberOfWindowsToBe(2));
 		driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
-		assertTrue(driver.findElement(By.xpath("//button[.='Print']")).isDisplayed());
-		assertTrue(driver.findElement(By.xpath("//input[@class='page-settings-all-radio']")).isSelected());
+		assertTrue(home.printButton.isDisplayed());
+		assertTrue(home.aLLRadioButton.isSelected());
 		driver.switchTo().frame("pdf-viewer");
-		assertTrue(driver.findElement(By.id("plugin")).isDisplayed());
+		assertTrue(home.printPage.isDisplayed());
 		driver.switchTo().defaultContent();
-		driver.findElement(By.className("cancel")).click();
+		home.cancelButton.click();
 		Thread.sleep(2000);
 		driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
 	}

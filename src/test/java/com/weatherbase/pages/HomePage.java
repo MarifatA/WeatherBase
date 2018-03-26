@@ -181,8 +181,10 @@ public class HomePage {
 	public WebElement printThisData;
 	@FindBy ( xpath = "//a[@id='print-icon']")
 	public WebElement printThisDataButton;
-	@FindBy ( xpath = "//embed[@id='plugin']")
+	@FindBy ( id = "plugin")
 	public WebElement printPage;
+	@FindBy ( className = "cancel")
+	public WebElement cancelButton;
 	@FindBy ( xpath = "//button[.='Print']")
 	public WebElement printButton;
 	@FindBy ( xpath = "//input[@class='page-settings-all-radio']")
